@@ -2,6 +2,7 @@ import * as esbuild from 'esbuild-wasm';
 import { useState, useEffect, useRef } from 'react';
 import ReactDOM from 'react-dom';
 import { unpkgPathPlugin } from './plugins/unpackage-path-plugin';
+import { fetchPlugin } from './plugins/fetch-plugin';
 
 const App = () => {
   const ref = useRef<any>();
@@ -26,7 +27,10 @@ const App = () => {
       entryPoints: ['index.js'],
       bundle: true,
       write: false,
-      plugins: [unpkgPathPlugin(input)],
+      plugins: [
+        unpkgPathPlugin(), // First sort out pathing
+        fetchPlugin(input) // Then fetch all the things
+      ],
       define: {
         'process.env.NODE_ENV': '"production"',
         global: 'window'
