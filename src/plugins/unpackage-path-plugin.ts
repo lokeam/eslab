@@ -10,7 +10,7 @@ const fileCache = localForage.createInstance({
   test plugin that hardcodes 2 files, will handle different types of files
 */
 
-export const unpkgPathPlugin = () => {
+export const unpkgPathPlugin = (textAreaInput: string) => {
   return {
     name: 'unpkg-path-plugin',
     setup(build: esbuild.PluginBuild) {
@@ -46,10 +46,7 @@ export const unpkgPathPlugin = () => {
         if (args.path === 'index.js') {
           return {
             loader: 'jsx',
-            contents: `
-              import React, { useState } from 'react-select';
-              console.log(React, useState);
-            `,
+            contents: textAreaInput,
           };
         }
 
