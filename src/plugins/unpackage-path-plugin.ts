@@ -37,12 +37,13 @@ export const unpkgPathPlugin = () => {
       build.onLoad({ filter: /.*/ }, async (args: any) => {
         console.log('onLoad', args);
  
+        // Todo: reduce number of requests react is requring us to download
         if (args.path === 'index.js') {
           return {
             loader: 'jsx',
             contents: `
-              const message = require('nested-test-pkg');
-              console.log(message);
+              import React, { useState } from 'react';
+              console.log(React, useState);
             `,
           };
         }
