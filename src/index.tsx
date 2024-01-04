@@ -3,6 +3,7 @@ import { useState, useEffect, useRef } from 'react';
 import ReactDOM from 'react-dom';
 import { unpkgPathPlugin } from './plugins/unpackage-path-plugin';
 import { fetchPlugin } from './plugins/fetch-plugin';
+import CodeEditor from './components/code-editor';
 
 const App = () => {
   const ref = useRef<any>();
@@ -63,8 +64,11 @@ const App = () => {
   </html>
   `;
 
+  const codeEditorInitialValue="let editMe = true;"
+
   return (
     <div>
+      <CodeEditor initialValue={codeEditorInitialValue}/>
       <textarea 
         onChange={(event) => setInput(event.target.value)}
         value={input}
