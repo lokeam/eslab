@@ -23,7 +23,7 @@ export const fetchPlugin = (textAreaInput: string) => {
       });
 
       // onLoad Caching
-      build.onLoad({ filter: /.*/}, async (args:any) => {
+      build.onLoad({ filter: /.*/}, async (args: any) => {
         const cachedResult = await fileCache.getItem<esbuild.OnLoadResult>(args.path);
         if (cachedResult) {
           return cachedResult;
