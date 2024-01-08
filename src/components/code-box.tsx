@@ -17,19 +17,11 @@ const CodeBox = () => {
 
   return (
     <Resizable direction='vertical'>
-      <div>
+      <div style={{height: '100%', display: 'flex', flexDirection: 'row'}}>
         <CodeEditor
           initialValue={codeEditorInitialValue}
           onChange={(value) => setInput(value)}
         />
-        <textarea 
-          onChange={(event) => setInput(event.target.value)}
-          value={input}
-        >
-        </textarea>
-        <div>
-          <button onClick={onClick}>Submit</button>
-        </div>
         <Preview code={code} />
     </div>
     </Resizable>

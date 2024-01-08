@@ -64,7 +64,7 @@ const CodeEditor: React.FC<CodeEditorProps> = ({ onChange, initialValue }) => {
       <MonacoEditor
         language="javascript"
         editorDidMount={onEditorDidMOunt}
-        height="300px"
+        height="100%"
         options={{
           wordWrap: 'on',
           showUnused: false,
