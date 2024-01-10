@@ -1,1 +1,25 @@
-/* md editor styles here */
+/* Resolve Bulma CSS specificity issues */
+.w-md-editor .title {
+  line-height: unset;
+  font-size: unset;
+  font-weight: unset;
+}
+
+.w-md-editor {
+  line-height: 1;
+}
+
+.markdown-editor-wrapper .w-md-editor-bar svg {
+  display: none;
+}
+
+.markdown-editor-wrapper .w-md-editor-bar {
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAFAQMAAABo7865AAAABlBMVEVHcEzMzMzyAv2sAAAAAXRSTlMAQObYZgAAABBJREFUeF5jOAMEEAIEEFwAn3kMwcB6I2AAAAAASUVORK5CYII=');
+  height: 11px;
+  cursor: row-resize;
+  background-color: #37414b;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  width: 100%;
+  position: relative;
+}

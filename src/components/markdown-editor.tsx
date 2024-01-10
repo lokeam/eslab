@@ -1,3 +1,4 @@
+import './markdown-editor.css';
 import { useState, useEffect, useRef } from 'react';
 import MDEditor from '@uiw/react-md-editor';
 
@@ -24,14 +25,14 @@ const MarkdownEditor: React.FC = () => {
 
   if (isEditing) {
     return (
-      <div ref={ref}>
+      <div className="markdown-editor-wrapper" ref={ref}>
         <MDEditor />
       </div>
     );
   }
 
   return (
-    <div onClick={() => setIsEditing(true)}>
+    <div className="markdown-editor-wrapper" onClick={() => setIsEditing(true)}>
       <MDEditor.Markdown source={DEFAULT_TEXT} />
     </div>
   );
