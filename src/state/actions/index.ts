@@ -1,4 +1,5 @@
 import { ActionType } from "../action-types";
+import { BoxTypes } from "../box";
 
 interface MoveBoxAction {
   type: ActionType.MOVE_BOX;
@@ -17,7 +18,7 @@ interface InsertBoxBeforeAction {
   type: ActionType.INSERT_BOX_BEFORE;
   payload: {
     id: string;
-    type: 'code' | 'text';
+    type: BoxTypes;
   }
 }
 
