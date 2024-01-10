@@ -5,7 +5,10 @@ import MDEditor from '@uiw/react-md-editor';
 const MarkdownEditor: React.FC = () => {
   const ref = useRef<HTMLDivElement | null>(null);
   const [isEditing, setIsEditing] = useState(false);
+
   const DEFAULT_TEXT = '# Markdown Editor';
+  const [value, setValue] = useState(DEFAULT_TEXT);
+
 
   useEffect(() => {
     const listener = ( event:MouseEvent ) => {
@@ -26,14 +29,16 @@ const MarkdownEditor: React.FC = () => {
   if (isEditing) {
     return (
       <div className="markdown-editor-wrapper" ref={ref}>
-        <MDEditor />
+        <MDEditor value={value} onChange={(updatedValue) => setValue(updatedValue || '')}/>
       </div>
     );
   }
 
   return (
-    <div className="markdown-editor-wrapper" onClick={() => setIsEditing(true)}>
-      <MDEditor.Markdown source={DEFAULT_TEXT} />
+    <div className="markdown-editor-wrapper card" onClick={() => setIsEditing(true)}>
+      <div className="card-content">
+        <MDEditor.Markdown source={value} />
+      </div>
     </div>
   );
 };
