@@ -10,9 +10,9 @@ const BoxListItem: React.FC<BoxListItemProps> = ({ box }) => {
   let child: JSX.Element;
 
   if (box.type === 'code') {
-    child = <CodeBox />
+    child = <CodeBox box={box}/>
   } else {
-    child = <MarkdownEditor />
+    child = <MarkdownEditor box={box} />
   }
 
   return (

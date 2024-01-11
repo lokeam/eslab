@@ -9,7 +9,7 @@ import {
 } from '../actions';
 import { BoxTypes } from '../box';
 
-export const updateCell = (id: string, content: string): UpdateBoxAction => {
+export const updateBox = (id: string, content: string): UpdateBoxAction => {
   return {
     type: ActionType.UPDATE_BOX,
     payload: {
