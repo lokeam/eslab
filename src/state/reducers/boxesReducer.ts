@@ -1,3 +1,4 @@
+import { produce } from 'immer';
 import { ActionType } from '../action-types';
 import { Action } from '../actions';
 import { Box } from '../box';
@@ -18,22 +19,58 @@ const initialState: BoxesState = {
   data: {}
 };
 
-const reducer = (
+const reducer = produce((
   state: BoxesState = initialState,
   action: Action
-  ): BoxesState => {
+  ) => {
     switch (action.type) {
       case ActionType.UPDATE_BOX:
-        return state;
+        const { id, content } = action.payload;
+        state.data[id].content = content;
+        return;
+
       case ActionType.DELETE_BOX:
+        delete state.data[action.payload];
+        state.order = state.order.filter((id) => id !== action.payload);
         return state;
+
       case ActionType.MOVE_BOX:
+        const { direction } = action.payload;
+        const index = state.order.findIndex((id) => id === action.payload.id);
+        const targetIndex = direction === 'up' ? index - 1: index + 1;
+
+        if (targetIndex < 0 || targetIndex > state.order.length - 1) {
+          return state;
+        }
+
+        state.order[index] = state.order[targetIndex];
+        state.order[targetIndex] = action.payload.id;
         return state;
+
       case ActionType.INSERT_BOX_BEFORE:
+        const box: Box = {
+          content: '',
+          type: action.payload.type,
+          id: generateRandomId()
+        };
+
+        state.data[box.id] = box;
+        const foundIndex = state.order.findIndex(id => id === action.payload.id);
+
+        if (foundIndex < 0) {
+          state.order.push(box.id);
+        } else {
+          state.order.splice(foundIndex, 0, box.id);
+        }
         return state;
-      default:
+
+        default:
         return state;
     }
+});
+
+const generateRandomId = () => {
+  return Math.random().toString(36).substring(2, 5);
 };
 
 export default reducer;
