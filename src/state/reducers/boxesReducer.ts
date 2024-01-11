@@ -9,7 +9,7 @@ interface BoxesState {
   order: string[];
   data: {
     [key: string]: Box
-  }
+  };
 }
 
 const initialState: BoxesState = {
@@ -19,10 +19,7 @@ const initialState: BoxesState = {
   data: {}
 };
 
-const reducer = produce((
-  state: BoxesState = initialState,
-  action: Action
-  ) => {
+const reducer = produce((state: BoxesState = initialState, action) => {
     switch (action.type) {
       case ActionType.UPDATE_BOX:
         const { id, content } = action.payload;
@@ -67,7 +64,7 @@ const reducer = produce((
         default:
         return state;
     }
-});
+}, initialState);
 
 const generateRandomId = () => {
   return Math.random().toString(36).substring(2, 5);

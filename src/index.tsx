@@ -4,13 +4,15 @@ import { Provider } from 'react-redux';
 import { store } from './state';
 import CodeBox from './components/code-box';
 import MarkdownEditor from './components/markdown-editor';
+import BoxList from './components/box-list';
 
 const App = () => {
   return (
     <Provider store={store}>
       <div>
         {/* <CodeBox /> */}
-        <MarkdownEditor />
+        {/* <MarkdownEditor /> */}
+        <BoxList />
       </div>
     </Provider>
   )
