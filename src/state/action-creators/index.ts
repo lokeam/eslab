@@ -19,14 +19,14 @@ export const updateBox = (id: string, content: string): UpdateBoxAction => {
   };
 };
 
-export const deleteCell = (id: string): DeleteBoxAction => {
+export const deleteBox = (id: string): DeleteBoxAction => {
   return {
     type: ActionType.DELETE_BOX,
     payload: id
   };
 };
 
-export const moveCell = (id: string, direction: Direction): MoveBoxAction => {
+export const moveBox = (id: string, direction: Direction): MoveBoxAction => {
   return {
     type: ActionType.MOVE_BOX,
     payload: {
@@ -36,7 +36,7 @@ export const moveCell = (id: string, direction: Direction): MoveBoxAction => {
   };
 };
 
-export const insertCellBefore = (id: string, boxType: BoxTypes): InsertBoxBeforeAction => {
+export const insertBoxBefore = (id: string, boxType: BoxTypes): InsertBoxBeforeAction => {
   return {
     type: ActionType.INSERT_BOX_BEFORE,
     payload: {

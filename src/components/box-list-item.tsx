@@ -1,6 +1,7 @@
 import { Box } from '../state';
 import CodeBox from './code-box';
 import MarkdownEditor from './markdown-editor';
+import PositionBar from './position-bar';
 
 interface BoxListItemProps {
   box: Box
@@ -16,7 +17,10 @@ const BoxListItem: React.FC<BoxListItemProps> = ({ box }) => {
   }
 
   return (
-    <div>{child}</div>
+    <div>
+      <PositionBar id={box.id} />
+      {child}
+    </div>
   )
 };
 
