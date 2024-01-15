@@ -6,8 +6,8 @@ interface BundlesState {
   [key: string]: {
     processing: boolean;
     code: string;
-    error: string;
-  }
+    err: string;
+  } | undefined;
 }
 
 const initialState: BundlesState = {};
@@ -16,9 +16,19 @@ const reducer = produce(
   (state: BundlesState = initialState, action: Action): BundlesState => {
     switch(action.type) {
       case ActionType.BUNDLE_START:
+        state[action.payload.boxId] = {
+          processing: true,
+          code: '',
+          err: ''
+        }
         return state;
       case ActionType.BUNDLE_COMPLETE:
-        return state;
+      state[action.payload.boxId] = {
+        processing: false,
+        code: action.payload.bundle.code,
+        err: action.payload.bundle.err
+      }
+      return state;
       default:
         return state;
     }

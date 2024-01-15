@@ -1,3 +1,4 @@
+import { Dispatch } from 'redux';
 import { ActionType } from '../action-types';
 import {
   Action,
@@ -5,9 +6,12 @@ import {
   DeleteBoxAction,
   MoveBoxAction,
   InsertBoxAfterAction,
-  Direction
+  Direction,
+  BundleStartAction,
+  BundleCompleteAction,
 } from '../actions';
 import { BoxTypes } from '../box';
+import bundle from '../../bundler';
 
 export const updateBox = (id: string, content: string): UpdateBoxAction => {
   return {
@@ -48,3 +52,24 @@ export const insertBoxAfter = (
     },
   };
 };
+
+export const createBundle = (boxId: string, input: string) => {
+  return async (dispatch:Dispatch<Action>) => {
+    dispatch({
+      type: ActionType.BUNDLE_START,
+      payload: {
+        boxId,
+      }
+    });
+
+    const result = await bundle(input);
+
+    dispatch({
+      type: ActionType.BUNDLE_COMPLETE,
+      payload: {
+        boxId,
+        bundle: result,
+      }
+    })
+  }
+}
