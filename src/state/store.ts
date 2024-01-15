@@ -8,7 +8,7 @@ export const store = createStore(reducers, {}, applyMiddleware(thunk));
 
 // manual testing of store
 store.dispatch({
-  type: ActionType.INSERT_BOX_BEFORE,
+  type: ActionType.INSERT_BOX_AFTER,
   payload: {
     id: null,
     type: 'code'
@@ -16,7 +16,7 @@ store.dispatch({
 });
 
 store.dispatch({
-  type: ActionType.INSERT_BOX_BEFORE,
+  type: ActionType.INSERT_BOX_AFTER,
   payload: {
     id: null,
     type: 'text'

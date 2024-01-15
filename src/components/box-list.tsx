@@ -9,15 +9,15 @@ const BoxList: React.FC = () => {
 
   const renderedBoxes = boxes.map((box) => (
     <Fragment key={box.id}>
-      <AddBox nextBoxId={box.id} />
       <BoxListItem box={box} />
+      <AddBox prevBoxId={box.id} />
     </Fragment>
   ));
 
   return (
     <div>
+      <AddBox forceVisible={boxes.length === 0} prevBoxId={null} />
       {renderedBoxes}
-      <AddBox forceVisible={boxes.length === 0} nextBoxId={null} />
     </div>
   )
 };

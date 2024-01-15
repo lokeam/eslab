@@ -2,19 +2,19 @@ import { useActions } from '../hooks/use-actions';
 import './add-box.css';
 
 interface AddBoxProps {
-  nextBoxId: string | null;
+  prevBoxId: string | null;
   forceVisible?: boolean;
 }
 
-const AddBox: React.FC<AddBoxProps> = ({ forceVisible, nextBoxId }) => {
-  const { insertBoxBefore } = useActions();
+const AddBox: React.FC<AddBoxProps> = ({ forceVisible, prevBoxId }) => {
+  const { insertBoxAfter } = useActions();
 
   return (
     <div className={`add-box ${forceVisible && 'force-visible'}`}>
       <div className='add-buttons'>
         <button
           className='button is-rounded is-primary is-small'
-          onClick={() => insertBoxBefore(nextBoxId, 'code')}
+          onClick={() => insertBoxAfter(prevBoxId, 'code')}
         >
           <span className='icon is-small'>
             <i className='fas fa-plus' />
@@ -23,7 +23,7 @@ const AddBox: React.FC<AddBoxProps> = ({ forceVisible, nextBoxId }) => {
         </button>
         <button
           className='button is-rounded is-primary is-small'
-          onClick={() => insertBoxBefore(nextBoxId, 'text')}
+          onClick={() => insertBoxAfter(prevBoxId, 'text')}
         >
           <span className='icon is-small'>
             <i className='fas fa-plus' />

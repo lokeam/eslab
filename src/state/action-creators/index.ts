@@ -4,7 +4,7 @@ import {
   UpdateBoxAction,
   DeleteBoxAction,
   MoveBoxAction,
-  InsertBoxBeforeAction,
+  InsertBoxAfterAction,
   Direction
 } from '../actions';
 import { BoxTypes } from '../box';
@@ -36,12 +36,12 @@ export const moveBox = (id: string, direction: Direction): MoveBoxAction => {
   };
 };
 
-export const insertBoxBefore = (
+export const insertBoxAfter = (
     id: string | null,
     boxType: BoxTypes
-  ): InsertBoxBeforeAction => {
+  ): InsertBoxAfterAction => {
   return {
-    type: ActionType.INSERT_BOX_BEFORE,
+    type: ActionType.INSERT_BOX_AFTER,
     payload: {
       id,
       type: boxType

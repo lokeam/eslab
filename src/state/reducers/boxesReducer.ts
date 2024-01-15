@@ -44,7 +44,7 @@ const reducer = produce((state: BoxesState = initialState, action) => {
         state.order[targetIndex] = action.payload.id;
         return state;
 
-      case ActionType.INSERT_BOX_BEFORE:
+      case ActionType.INSERT_BOX_AFTER:
         const box: Box = {
           content: '',
           type: action.payload.type,
@@ -55,9 +55,9 @@ const reducer = produce((state: BoxesState = initialState, action) => {
         const foundIndex = state.order.findIndex(id => id === action.payload.id);
 
         if (foundIndex < 0) {
-          state.order.push(box.id);
+          state.order.unshift(box.id);
         } else {
-          state.order.splice(foundIndex, 0, box.id);
+          state.order.splice(foundIndex + 1, 0, box.id);
         }
         return state;
 

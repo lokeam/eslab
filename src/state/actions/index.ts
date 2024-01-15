@@ -16,8 +16,8 @@ export interface DeleteBoxAction {
   payload: string;
 }
 
-export interface InsertBoxBeforeAction {
-  type: ActionType.INSERT_BOX_BEFORE;
+export interface InsertBoxAfterAction {
+  type: ActionType.INSERT_BOX_AFTER;
   payload: {
     id: string | null;
     type: BoxTypes;
@@ -32,4 +32,4 @@ export interface UpdateBoxAction {
   }
 }
 
-export type Action = MoveBoxAction | DeleteBoxAction | InsertBoxBeforeAction | UpdateBoxAction;
+export type Action = MoveBoxAction | DeleteBoxAction | InsertBoxAfterAction | UpdateBoxAction;
