@@ -36,7 +36,10 @@ export const moveBox = (id: string, direction: Direction): MoveBoxAction => {
   };
 };
 
-export const insertBoxBefore = (id: string, boxType: BoxTypes): InsertBoxBeforeAction => {
+export const insertBoxBefore = (
+    id: string | null,
+    boxType: BoxTypes
+  ): InsertBoxBeforeAction => {
   return {
     type: ActionType.INSERT_BOX_BEFORE,
     payload: {

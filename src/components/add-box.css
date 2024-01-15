@@ -1,0 +1,33 @@
+.add-box {
+  position: relative;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.add-box:hover {
+  opacity: 1.0;
+}
+
+.add-box.force-visible {
+  opacity: 1.0;
+}
+
+.add-box .divider {
+  position: absolute;
+  top: 50%;
+  bottom: 50%;
+  left: 2.5%;
+  right: 2.5%;
+  border-bottom: 1px solid gray;
+  width: 95%;
+  z-index: -1;
+}
+
+.add-box .add-buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.add-box .add-buttons button {
+  margin: 0 20px;
+}
