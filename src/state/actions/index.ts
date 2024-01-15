@@ -32,4 +32,28 @@ export interface UpdateBoxAction {
   }
 }
 
-export type Action = MoveBoxAction | DeleteBoxAction | InsertBoxAfterAction | UpdateBoxAction;
+export interface BundleStartAction {
+  type: ActionType.BUNDLE_START,
+  payload: {
+    boxId: string;
+  }
+}
+
+export interface BundleCompleteAction {
+  type: ActionType.BUNDLE_COMPLETE,
+  payload: {
+    boxId: string;
+    bundle: {
+      code: string;
+      err: string;
+    };
+  };
+}
+
+export type Action =
+  MoveBoxAction |
+  DeleteBoxAction |
+  InsertBoxAfterAction |
+  UpdateBoxAction |
+  BundleStartAction |
+  BundleCompleteAction;

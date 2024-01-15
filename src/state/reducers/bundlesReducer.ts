@@ -1,2 +1,28 @@
-// manually testing reducer
-export default 1;
+import { produce } from 'immer';
+import { ActionType } from '../action-types';
+import { Action } from '../actions';
+
+interface BundlesState {
+  [key: string]: {
+    processing: boolean;
+    code: string;
+    error: string;
+  }
+}
+
+const initialState: BundlesState = {};
+
+const reducer = produce(
+  (state: BundlesState = initialState, action: Action): BundlesState => {
+    switch(action.type) {
+      case ActionType.BUNDLE_START:
+        return state;
+      case ActionType.BUNDLE_COMPLETE:
+        return state;
+      default:
+        return state;
+    }
+  }, initialState
+);
+
+export default reducer;
