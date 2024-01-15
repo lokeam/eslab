@@ -1,0 +1,10 @@
+.box-list-item {
+  position: relative;
+  margin: 30px 10px;
+}
+
+.position-bar-wrapper {
+  background-color: #37414b;
+  height: 30px;
+  width: 100%;
+}
