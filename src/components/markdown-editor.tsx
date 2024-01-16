@@ -15,9 +15,6 @@ const MarkdownEditor: React.FC<MarkdownEditorProps> = ({ box }) => {
   const [isEditing, setIsEditing] = useState(false);
   const { updateBox } = useActions();
 
-  const DEFAULT_TEXT = '# Markdown Editor';
-
-
   useEffect(() => {
     const listener = ( event:MouseEvent ) => {
       if (ref.current && event.target && ref.current.contains(event.target as Node)) {

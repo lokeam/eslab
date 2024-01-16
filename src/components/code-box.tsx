@@ -22,9 +22,7 @@ const CodeBox: React.FC<CodeBoxProps> = ({ box }) => {
     return () => {
       clearTimeout(timer);
     };
-  }, [box.id, box.content]);
-
-  const codeEditorInitialValue="let editMe = true;"
+  }, [box.id, box.content, createBundle]);
 
   return (
     <Resizable direction='vertical'>

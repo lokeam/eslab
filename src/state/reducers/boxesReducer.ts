@@ -1,6 +1,5 @@
 import { produce } from 'immer';
 import { ActionType } from '../action-types';
-import { Action } from '../actions';
 import { Box } from '../box';
 
 interface BoxesState {
