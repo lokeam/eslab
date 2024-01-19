@@ -3,20 +3,20 @@ An in-browser EcmaScript dynamic interactive development environment allowing us
 
 ## Key Features
 * In-browser code transpiling via Web Assembly
+* Cumulative code execution between code panes/boxes
 * Cross-platform (Windows, Mac, Linux ready)
 * Import NPM modules or code JavaScript/CSS libraries for immediate use within a code box.
 * EcmaScript and React code syntax highlighting
 * Draggable, Resizable Code window panes
 
-## Project Status - 50%
+## Project Status - 70%
 _In active development_
 
 ## Project Roadmap Features
-* Monorepo code implementation via [Lerna](https://lerna.js.org/?utm_source=monorepo.tools)
-* Cumulative code execution between code panes/boxes
-* Save work to user's local file system
-* Creation of Public Express API to share any work
-* Theming - Change colors and topography
+- [ ] Monorepo code implementation via [Lerna](https://lerna.js.org/?utm_source=monorepo.tools)
+- [ ] Save work to user's local file system
+- [ ] Creation of Public Express API to share any work
+- [ ] Theming - Change colors and typography
 
 ## How To Use
 To clone and run this application, you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) (which comes with [npm](http://npmjs.com)) installed on your computer. From your command line:
