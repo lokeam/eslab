@@ -5,8 +5,8 @@ import Resizable from './resizable';
 import { Box } from '../state';
 import { useActions } from '../hooks/use-actions';
 import { useTypedSelector } from '../hooks/use-typed-selector';
+import { useCodeAggregate } from '../hooks/use-code-aggregate';
 import './code-box.css';
-import { code } from '@uiw/react-md-editor/lib/cjs/commands';
 
 interface CodeBoxProps {
   box: Box
@@ -16,49 +16,16 @@ const CodeBox: React.FC<CodeBoxProps> = ({ box }) => {
   const { updateBox, createBundle } = useActions();
   const bundle = useTypedSelector((state) => state.bundles[box.id]);
   const { data, order } = useTypedSelector((state) => state.boxes);
-
-  const codeAggregate = useCallback(() => {
-    const orderedBoxes = order.map(id => data[id]);
-    const result = [];
-
-    let showFn = `
-      const show = (value) => {
-        const rootElement = document.querySelector('#root');
-        if (typeof value === 'object') {
-
-          // Show JSX elements
-          if (value.$$typeof && value.props) {
-            ReactDOM.render(value, rootElement);
-
-            // Show content and complex values
-          } else {
-            rootElement.innerHTML = JSON.stringify(value);
-          }
-        } else {
-          rootElement.innerHTML = value;
-        }
-      };
-    `;
-    result.push(showFn);
-
-    for (let index = 0; index < orderedBoxes.length; index++) {
-      if (orderedBoxes[index].type === 'code') {
-        result.push(orderedBoxes[index].content);
-      }
-      if (orderedBoxes[index].id === box.id) break;
-    }
-
-    return result;
-  }, [order, data, box.id]);
+  const codeAggregate = useCodeAggregate(box.id, order, data);
 
   useEffect(() => {
     if (!bundle) {
-      createBundle(box.id, codeAggregate().join('\n'));
+      createBundle(box.id, codeAggregate);
       return;
     }
 
     const timer = setTimeout(async () => {
-      createBundle(box.id, codeAggregate().join('\n'))
+      createBundle(box.id, codeAggregate)
     }, 750);
 
     return () => {
@@ -67,7 +34,7 @@ const CodeBox: React.FC<CodeBoxProps> = ({ box }) => {
     // Todo: Find better way to do remove output window flash without
     // including bundle pointer into dependency array
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [box.id, codeAggregate().join('\n'), createBundle]);
+  }, [codeAggregate, box.id, createBundle]);
 
   return (
     <Resizable direction="vertical">
