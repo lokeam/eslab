@@ -2,6 +2,7 @@ import { Fragment } from "react";
 import { useTypedSelector } from "../hooks/use-typed-selector";
 import BoxListItem from "./box-list-item";
 import AddBox from "./add-box";
+import './box-list.css'
 
 const BoxList: React.FC = () => {
   const { data, order } = useTypedSelector((state) => state.boxes);
@@ -15,7 +16,7 @@ const BoxList: React.FC = () => {
   ));
 
   return (
-    <div>
+    <div className="box-list">
       <AddBox forceVisible={boxes.length === 0} prevBoxId={null} />
       {renderedBoxes}
     </div>

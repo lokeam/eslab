@@ -1,0 +1,7 @@
+.box-list {
+  margin: 0 25px;
+}
+
+.react-draggable-transparent-selection .box-list {
+  margin-bottom: 100vh;
+}
