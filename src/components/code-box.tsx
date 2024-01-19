@@ -21,6 +21,26 @@ const CodeBox: React.FC<CodeBoxProps> = ({ box }) => {
     const orderedBoxes = order.map(id => data[id]);
     const result = [];
 
+    let showFn = `
+      const show = (value) => {
+        const rootElement = document.querySelector('#root');
+        if (typeof value === 'object') {
+
+          // Show JSX elements
+          if (value.$$typeof && value.props) {
+            ReactDOM.render(value, rootElement);
+
+            // Show content and complex values
+          } else {
+            rootElement.innerHTML = JSON.stringify(value);
+          }
+        } else {
+          rootElement.innerHTML = value;
+        }
+      };
+    `;
+    result.push(showFn);
+
     for (let index = 0; index < orderedBoxes.length; index++) {
       if (orderedBoxes[index].type === 'code') {
         result.push(orderedBoxes[index].content);
