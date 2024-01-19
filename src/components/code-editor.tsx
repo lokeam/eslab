@@ -40,7 +40,7 @@ const CodeEditor: React.FC<CodeEditorProps> = ({ onChange, initialValue }) => {
       () => {}
     );
   };
-  
+
   const onFormatClick = () => {
     const unformatted = codeEditorRef.current.getModel().getValue();
 
@@ -67,6 +67,7 @@ const CodeEditor: React.FC<CodeEditorProps> = ({ onChange, initialValue }) => {
         height="100%"
         options={{
           wordWrap: 'on',
+          minimap: { enabled: false },
           showUnused: false,
           folding: false,
           lineNumbersMinChars: 3,
